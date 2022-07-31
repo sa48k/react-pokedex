@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Col, Card, CardBody, CardTitle, CardSubtitle, Badge, ListGroup, ListGroupItem } from 'reactstrap'
 
 function PokemonCard({ pokemon }) {
+    if (!pokemon) return null
     // const [currentPokemon, setCurrentPokemon] = useState(); // TODO: this doesn't need to be in state at all
     // get full data for pokemon
     // useEffect(() => {
@@ -15,16 +16,15 @@ function PokemonCard({ pokemon }) {
     // if (!currentPokemon) return null
     return (
       <Col>
-            <Card className="border border-dark" key={pokemon.index}>
+            <Card className="border border-dark shadow" key={pokemon.index}>
                 <img className="pokemonimg mx-auto" src={pokemon.image_url} />
                 <CardBody >
-                    <CardTitle className="success">
+                    <CardTitle>
                         {pokemon.name.toUpperCase()}
                     </CardTitle>
                     <CardSubtitle>
                         {pokemon.types.map(type => <Badge>{type}</Badge>)}
                     </CardSubtitle>
-                    
                 </CardBody>
           </Card>
       </Col>
